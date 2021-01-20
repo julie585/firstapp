@@ -28,9 +28,8 @@ Route::get('/about', function () {
     return view('pages.about');
 });    
 
-route::get('/help',function(){  
-    return view ('pages.help');
-});
+route::get('/help','helpcontroller@help'); 
+  
 
 route::get('/events',function(){  
   $events=[
@@ -46,3 +45,4 @@ return view ('events.index',compact('events'));
     
 Route::get('/ATL','postscontroller@show');
 Route::get('/about','postscontroller@join');
+Route::post('/help','postscontroller@make');

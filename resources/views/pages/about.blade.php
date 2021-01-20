@@ -3,7 +3,7 @@
 
 
 @section('container')
-<h1>AboutNous</h1>
+<h1>About</h1>
 @include ('shared.weekend')
 @endsection  
 

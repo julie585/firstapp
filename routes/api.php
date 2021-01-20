@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/create','postscontroller@store');
+Route::post('/make','postscontroller@show');
+Route::post('/take','postscontroller@up');
+Route::post('/updatelivre','postscontroller@update');
+Route::post('/deletelivre','postscontroller@delete');
