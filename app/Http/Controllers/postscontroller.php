@@ -19,6 +19,6 @@ class postscontroller extends Controller
             ->select('id')
             ->first(); 
          //dd($livre[0]['Nom']);
-        // dd($livre);
+         dd($livre);
     }
 }
