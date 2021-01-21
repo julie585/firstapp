@@ -62,15 +62,47 @@ class postscontroller extends Controller
     public function update(Request $request){
         //find the element 
        // $livre = Livre::find(3);
-       $livre = Livre::where('Nom','FANHO')->first();       
+       $livre = Livre::where('Nom',$request['FANHO'])->first();       
        $livre->Nom = $request['nom'];
        $livre->save(); 
         dd($livre);
     }
 
     public function delete(Request $request){
-        $livre = Livre::where('Nom','alen')->first();
+        $livre = Livre::where('Nom',$request['alen'])->first();
        // Livre::destroy(3);
+       Livre:: find($request['id']);
+       Livre::destroy($request ['id']);
        Livre::destroy($livre->id);
     }
+    public function modify(Request $request){
+    
+        $classe = Classe::where('Nom',$request['titi'])->first();  
+        $classe->Nom = $request['nom'];
+        $classe->Prenom = $request['prenom'];
+        $classe->Age = $request['Age'];
+        $classe->save();
+        dd($classe);
+
+    }
+    public function supprim(Request $request){
+       
+    Classe:: find($request['nom']);
+    $classe= Classe:: find($request['nom']);
+    Classe:: destroy($request['nom']);
+        dd($classe);
+    }
+    public function modif(Request $request){
+        $Etudiants=Etudiant:: find($request['id']);
+        $Etudiants->Nom = $request ['nom'];
+        $Etudiants->Prenom = $request ['prenom'];  
+        $Etudiants->save();       
+        dd($Etudiants);
+    }
+    public function supp(Request $request){
+       
+        Etudiant:: find ($request['id']);
+    }
+    
+
 }

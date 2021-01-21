@@ -23,3 +23,12 @@ Route::post('/make','postscontroller@show');
 Route::post('/take','postscontroller@up');
 Route::post('/updatelivre','postscontroller@update');
 Route::post('/deletelivre','postscontroller@delete');
+Route::post('/modifyclasse','postscontroller@modify');
+Route::post('/suppclasse','postscontroller@supprim');
+Route::post('/modifetudiant','postscontroller@modif');
+Route::post('/suppetudiant','postscontroller@supp');
+Route::post('/information','informationController@inform');
+Route::post('/updateinformation','informationController@updateinform');
+Route::post('/supprimerinformation','informationController@supprimer');
+
+

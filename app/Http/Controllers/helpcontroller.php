@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 class helpcontroller extends Controller
@@ -12,4 +13,6 @@ class helpcontroller extends Controller
         return view ('pages.help',compact('last_name'));
     return view ('pages.help');
     } 
+    //
+
 }

@@ -46,3 +46,4 @@ return view ('events.index',compact('events'));
 Route::get('/ATL','postscontroller@show');
 Route::get('/about','postscontroller@join');
 Route::post('/help','postscontroller@make');
+Route::post('/information','informationController@inform');
