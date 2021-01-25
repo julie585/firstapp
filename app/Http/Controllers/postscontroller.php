@@ -83,14 +83,7 @@ class postscontroller extends Controller
         $classe->Age = $request['Age'];
         $classe->save();
         dd($classe);
-
-    }
-    public function supprim(Request $request){
-       
-    Classe:: find($request['nom']);
-    $classe= Classe:: find($request['nom']);
-    Classe:: destroy($request['nom']);
-        dd($classe);
+    
     }
     public function modif(Request $request){
         $Etudiants=Etudiant:: find($request['id']);

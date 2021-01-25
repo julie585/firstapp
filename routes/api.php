@@ -30,5 +30,6 @@ Route::post('/suppetudiant','postscontroller@supp');
 Route::post('/information','informationController@inform');
 Route::post('/updateinformation','informationController@updateinform');
 Route::post('/supprimerinformation','informationController@supprimer');
+Route::post('/parking','classcontroller@ajout');
 
 

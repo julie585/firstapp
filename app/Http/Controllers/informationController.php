@@ -21,7 +21,7 @@ class informationController extends Controller
 }
 public function updateinform(Request $request){
     //find the element 
-   $information =information::where('nom',$request['doris'])->first(); 
+   $information =information::where('nom',$request['recherche'])->first(); 
    if ($information != null) {
         $information->Nom = $request['nom'];
         $information->Prenom= $request['prenom'];
@@ -30,9 +30,9 @@ public function updateinform(Request $request){
         $information->save(); 
         return response()->json([
             'Succes'=> true,
+            'information'=> $information,
             'message'=>'existant'
-
-        ],401);
+        ],201);
    } else {
         return response()->json([
             'Succes'=> false,
@@ -40,13 +40,10 @@ public function updateinform(Request $request){
 
         ],401);  
    }
-         
- 
-    dd($information);
 }
 public function supprimer(Request $request){
        $information= information:: find($request['id']);
-       $information->delete();
-        dd($information);
+       $information->delete();        
+
 }
 }
