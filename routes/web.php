@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+return view ('welcome');
+});
+Route::get('/formulaire',function(){
+  return view ('formulaire');
+});
 
 
-dump(DB:: table ('posts')->wheretitleAndBody('juste un titre','juste un contenu')->get()) ;
+//dump(DB:: table ('posts')->wheretitleAndBody('juste un titre','juste un contenu')->get()) ;
 
    
  
+
+Route::get('/services',function(){
+  return view('services');
 });
  
 
