@@ -53,9 +53,12 @@ class postscontroller extends Controller
          $classe->Nom = $request['nom'];
          $classe->Prenom = $request['prenom'];
          $classe->Age  = $request['Age'];
-
          $classe->save();
-         
+          return response()->json([
+            'Succes'=> true,
+            'message'=>'insertion effecuer'
+        ],201);
+           
 
     }
 
@@ -77,25 +80,110 @@ class postscontroller extends Controller
     }
     public function modify(Request $request){
     
-        $classe = Classe::where('Nom',$request['titi'])->first();  
+        $classe = Classe::where('Nom',$request['cherche'])->first();
+        if ($classe != null) { 
         $classe->Nom = $request['nom'];
         $classe->Prenom = $request['prenom'];
         $classe->Age = $request['Age'];
         $classe->save();
-        dd($classe);
+       
+        return response()->json([
+            'Succes'=> true,
+            'classe'=> $classe,
+            'message'=>'existant'
+        ],201);
+   } else {
+        return response()->json([
+            'Succes'=> false,
+            'message'=>'inexistant'
+
+        ],401);  
     
     }
+}
+    public function supprim(Request $request){        
+        $classe = classe::where('Nom',$request['search'])->first();
+         
+        if ($classe != null) {  
+           classe::where('Nom',$request['search'])->delete(); 
+          
+        return response()->json([
+            'Succes'=> true,
+            'message'=>'la classe à été supprimer avec succès'
+        ],201);
+   } else {
+        return response()->json([
+            'Succes'=> false,
+            'message'=>'classe non supprimer'
+
+        ],401);
+    
+    
+}
+    }
+
     public function modif(Request $request){
-        $Etudiants=Etudiant:: find($request['id']);
+        $Etudiants=Etudiant::where('Nom',$request['search'])->first(); 
+        if ($Etudiants != null) { 
         $Etudiants->Nom = $request ['nom'];
         $Etudiants->Prenom = $request ['prenom'];  
         $Etudiants->save();       
-        dd($Etudiants);
+        return response()->json([
+            'Succes'=> true,
+            'Etudiants'=> $Etudiants,
+            'message'=>'modification etudiant réussi'
+        ],201);
+   } else {
+        return response()->json([
+            'Succes'=> false,
+            'message'=>'modification non existant'
+
+        ],401);  
+    
+    }
+
     }
     public function supp(Request $request){
+        $Etudiants = Etudiant::where('Nom',$request['search'])->first(); 
+        if ($Etudiants != null) {  
+            $Etudiants->deleted();
+          return response()->json([
+              'Succes'=> true,
+              'message'=>'la classe etudiant à été supprimer avec succès'
+          ],201);
+     } else {
+          return response()->json([
+              'Succes'=> false,
+              'message'=>'classe etudiant non supprimer'
+  
+          ],401);  
        
-        Etudiant:: find ($request['id']);
     }
-    
+}
+
+public function affichage(){
+$classe = classe::get();
+      if ($classe!=null){
+
+            return response()->json([
+            'succes'=>true,
+            'classe'=> $classe,
+             'message'=>'Affichage correcte'
+],201);
+    }else{
+             return response()->json([
+            'succes'=> false,
+            'message'=>'Affichage incorrecte'
+
+],401);
+
+
+
 
 }
+
+}
+
+}
+
+    

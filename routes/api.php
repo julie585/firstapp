@@ -32,4 +32,4 @@ Route::post('/updateinformation','informationController@updateinform');
 Route::post('/supprimerinformation','informationController@supprimer');
 Route::post('/parking','classcontroller@ajout');
 
-
+Route::get('/affiche','postscontroller@affichage');
