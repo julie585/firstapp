@@ -19,7 +19,7 @@ return view ('welcome');
 Route::get('/formulaire',function(){
   return view ('formulaire');
 });
-
+Route::post('/validerformulaire','postscontroller@valider')->name('valider');
 
 //dump(DB:: table ('posts')->wheretitleAndBody('juste un titre','juste un contenu')->get()) ;
 

@@ -158,8 +158,10 @@ class postscontroller extends Controller
   
           ],401);  
        
+        }
     }
 }
+//
 
 public function affichage(){
 $classe = classe::get();
@@ -183,7 +185,18 @@ $classe = classe::get();
 }
 
 }
+ //
+ public function valider(Request $request){
+     dd($request);
+     $test = $request->name 
+
+
+
+
+
+ }
 
 }
 
-    
+   
+   
