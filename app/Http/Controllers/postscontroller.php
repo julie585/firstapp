@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Livre;
 use App\Etudiant;
 use App\Classe;
+use App\Matières;
 
 
 use Illuminate\Http\Request;
@@ -125,8 +126,10 @@ class postscontroller extends Controller
     public function modif(Request $request){
         $Etudiants=Etudiant::where('Nom',$request['search'])->first(); 
         if ($Etudiants != null) { 
-        $Etudiants->Nom = $request ['nom'];
-        $Etudiants->Prenom = $request ['prenom'];  
+        $Etudiants->nomEtudiant = $request ['nom'];
+        $Etudiants->prenomEtudiant = $request ['prenom'];  
+        $Etudiants->ageEtudiant= $request ['age'];  
+        $Etudiants->sexeEtudiant = $request ['sexe'];  
         $Etudiants->save();       
         return response()->json([
             'Succes'=> true,
@@ -160,8 +163,7 @@ class postscontroller extends Controller
        
         }
     }
-}
-//
+
 
 public function affichage(){
 $classe = classe::get();
@@ -185,18 +187,63 @@ $classe = classe::get();
 }
 
 }
- //
- public function valider(Request $request){
-     dd($request);
-     $test = $request->name 
+  
 
+public function valider(Request $request){
+    dd($request);
 
-
+     $test = $request->name;
 
 
  }
 
+
+    public function updateE (Request $request){
+     
+        $Etudiants= new  Etudiant();
+        $Etudiants->nomEtudiant = $request ['nom'];
+        $Etudiants->prenomEtudiant = $request ['prenom'];  
+        $Etudiants->ageEtudiant= $request ['age'];  
+        $Etudiants->sexeEtudiant = $request ['sexe'];  
+        $Etudiants->save();
+          return response()->json([
+            'Succes'=> true,
+            'message'=>'insertion effecuer'
+        ],201);
+           
+
+    }
+
+  public function affichageE(){
+     $Etudiants= Etudiant::get();
+          if ($Etudiants!=null){
+    
+              return view('etudiant',compact('Etudiants'));
+
+        }else{
+                 return  view('etudiant');
+                
+    
+
+
+}
+} 
+
+   public function updateM (Request $request){
+    
+    $Matieres= new  Matières();
+    $Matieres->nomMatière = $request ['nom']; 
+    $Matieres->save();
+      return response()->json([
+        'Succes'=> true,
+        'message'=>'insertion effecuer'
+    ],201);
+       
+
+}
 }
 
-   
-   
+
+
+
+

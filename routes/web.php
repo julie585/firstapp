@@ -31,7 +31,25 @@ Route::get('/services',function(){
 });
  
 
+Route::get('/index',function(){
+return view ('index');
+});
+Route::get('Admin',function(){
+  return view('Admin');
+});
+Route::get('Matiere',function(){
+  return view('Matiere');
+Route::get('/afficheMatiere','postscontroller@affichageM');
+});
+Route::get('etudiant',function(){
+  return view('etudiant');
+});
+Route::get('/afficheEtudiant','postscontroller@affichageE');
 
+  
+Route::get('Professeur',function(){
+  return view('Professeur');
+});
 Route::get('/about', function () {
     return view('pages.about');
 });    
