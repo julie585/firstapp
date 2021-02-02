@@ -35,5 +35,10 @@ Route::post('/updateEtudiant','postscontroller@updateE');
 Route::get('/afficheEtudiant','postscontroller@affichageE');
 Route::post('/updateMatiere','postscontroller@updateM');
 Route::get('/afficheMatiere','postscontroller@affichageM');
+Route::post('/updateProfesseur','postscontroller@updateProf');
+Route::get('/afficheProfesseur','postscontroller@afficheP');
 Route::get('/affiche','postscontroller@affichage');
+Route::get('/Récuperation','postscontroller@recupere');
+Route::post('/updateAdmin','postscontroller@updateA');
 
+    

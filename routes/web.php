@@ -37,19 +37,29 @@ return view ('index');
 Route::get('Admin',function(){
   return view('Admin');
 });
+Route::post('/validerAdmin','postscontroller@Message')->name('Message');
+
 Route::get('Matiere',function(){
   return view('Matiere');
-Route::get('/afficheMatiere','postscontroller@affichageM');
 });
+Route::get('/afficheMatiere','postscontroller@affichageM');
+
 Route::get('etudiant',function(){
   return view('etudiant');
 });
-Route::get('/afficheEtudiant','postscontroller@affichageE');
+Route::get('/afficheEtudiant','postscontroller@affichageE')->name('affichageE');
 
   
+Route::get('Template',function(){
+  return view('Template');
+});
 Route::get('Professeur',function(){
   return view('Professeur');
 });
+ Route::get('/afficheProfesseur','postscontroller@afficheP');
+
+ 
+
 Route::get('/about', function () {
     return view('pages.about');
 });    

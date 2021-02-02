@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Livre;
-use App\Etudiant;
 use App\Classe;
+use App\Etudiant;
 use App\Matières;
 
 
+
+use App\Professeurs;
+use App\Administrateurs;
 use Illuminate\Http\Request;
 
 class postscontroller extends Controller
@@ -216,6 +219,7 @@ public function valider(Request $request){
 
   public function affichageE(){
      $Etudiants= Etudiant::get();
+    //dd($Etudiants);
           if ($Etudiants!=null){
     
               return view('etudiant',compact('Etudiants'));
@@ -231,9 +235,9 @@ public function valider(Request $request){
 
    public function updateM (Request $request){
     
-    $Matieres= new  Matières();
-    $Matieres->nomMatière = $request ['nom']; 
-    $Matieres->save();
+    $Matières= new Matières();
+    $Matières->nomMatière = $request ['nom']; 
+    $Matières->save();
       return response()->json([
         'Succes'=> true,
         'message'=>'insertion effecuer'
@@ -241,7 +245,82 @@ public function valider(Request $request){
        
 
 }
+ 
+
+public function affichageM(){
+      $Matières= Matières::get();
+    
+         if($Matières!=null){
+                return view ('Matiere',compact('Matières'));
+         }else{
+                return view('Matiere');
+ }
 }
+
+public function updateProf(Request $request){
+  
+    $Professeurs= new Professeurs();
+    $Professeurs->nomProfesseurs = $request ['nom'];
+    $Professeurs->save();
+       return response()->json([
+           'succes'=>true,
+           'message'=>'insertion effectuer'
+       ],201);
+
+}
+
+public function afficheP(){
+      $Professeurs= Professeurs::get();
+      if($Professeurs!=null){
+          return view ('Professeur',compact('Professeurs'));
+      }else{
+          return view ('Professeur');
+      }
+}
+public function recupere(){
+          $Administateurs= Administrateurs::get();
+              if ($Administateurs!=null){
+    
+                return response()->json([
+                'succes'=>true,
+              'Administrateurs'=>$Administateurs,
+                 'message'=>'Affichage correcte'
+    ],201);
+              }else{
+                 return response()->json([
+                'succes'=> false,
+                'message'=>'Affichage incorrecte'
+    
+    ],401);
+    
+}
+}
+ 
+public function Message (Request $request){
+         //  dd($request->all());
+
+            $test = $request->name;
+     return view('Template');
+
+
+ }
+ 
+public function updateA(Request $request){
+    
+            $Administateurs= new Administrateurs();
+            $Administateurs->email= $request ['Email'];
+            $Administateurs->password= $request ['Password'];
+             $Administateurs->save();
+                   return response()->json([
+                     'succes'=>true,
+                      'message'=>'insertion effectuer'
+       ],201);
+
+}
+
+
+}
+
 
 
 
