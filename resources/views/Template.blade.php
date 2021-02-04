@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -45,7 +46,7 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+      <a class="nav-link" href="#"></a>
     </li>
   </ul>
 </header>
@@ -55,35 +56,63 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <section class="page-section" id="etudiant">
-                            @yield('etudiant')
-                        </section>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <span data-feather="file"></span>
-                        MATIERES
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('affichageE')}}">
+                          <span data-feather="home"></span>
+                          ETUDIANTS
                         </a>
-                    </li>
+                      </li>
+                      <!--etudiant -->
+                      <section class="page-section" id="etudiant">
+                        @yield('etudiant')
+                    </section>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <span data-feather="shopping-cart"></span>
+                        <a class="nav-link active" aria-current="page" href="{{route('creation')}}">
+                          <span data-feather="home"></span>
+                         Ajout Etudiant
+                        </a>
+                      </li>
+                      <!--matiere -->
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{route('affichageM')}}">
+                          <span data-feather="home"></span>
+                          MATIERES
+                        </a>
+                      </li>
+                      <section class="page-section" id="Matiere">
+                        @yield('Matiere')
+                    </section>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{{route('creationM')}}">
+                        <span data-feather="home"></span>
+                        Ajout matiere
+                      </a>
+                    </li>
+                    
+                     <!--Professeurs-->
+                     <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{{route('afficheP')}}">
+                        <span data-feather="home"></span>
                         PROFESSEURS
-                        </a>
+                      </a>
                     </li>
+                     <section class="page-section" id="Professeurs">
+                      @yield('Professeurs')
+                  </section>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('creationP')}}">
+                      <span data-feather="home"></span>
+                      Ajout professeur
+                    </a>
+                  </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" aria-current="page" href="{{route('AFFICHEpro')}}">
                         <span data-feather="users"></span>
                         Affecter un Professeurs à une matière
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <span data-feather="bar-chart-2"></span>
-                        Affecter un étudiant à un professeurs
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" aria-current="page" href="{{route('afficheEtudmat')}}">
                         <span data-feather="layers"></span>
                         Affecter un étudiant à une matière
                         </a>

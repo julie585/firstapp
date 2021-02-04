@@ -11,4 +11,8 @@ class Matières extends Model
     {
         return $this->hasMany( Etudiant::class); 
     }
+    public function Professeurs()
+    {
+        return $this->belongsTo( Professeurs::class); 
+    }
 }

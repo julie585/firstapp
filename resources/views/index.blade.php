@@ -81,5 +81,18 @@
   <script src="js/clean-blog.min.js"></script>
 
 </body>
+ <!--createetudiant -->
+ <li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{{route('validerE')}}">
+    <span data-feather="home"></span>
+    <form method="post" action="{{route('validerE')}}">
+
+    Ajout etudiant
+  </a>
+</li>
+<section class="page-section" id="CreateEtudiant">
+  @yield('CreateEtudiant')
+</section>
+
 
 </html>

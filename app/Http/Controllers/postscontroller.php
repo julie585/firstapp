@@ -5,9 +5,6 @@ use App\Livre;
 use App\Classe;
 use App\Etudiant;
 use App\Matières;
-
-
-
 use App\Professeurs;
 use App\Administrateurs;
 use Illuminate\Http\Request;
@@ -104,6 +101,11 @@ class postscontroller extends Controller
         ],401);  
     
     }
+
+
+
+
+
 }
     public function supprim(Request $request){        
         $classe = classe::where('Nom',$request['search'])->first();
@@ -193,13 +195,28 @@ $classe = classe::get();
   
 
 public function valider(Request $request){
-    dd($request);
+
+    //  enregistrer les informations saisies 
+
+   // $Etudiants= new  Etudiant();
+   // $Etudiants->nomEtudiant = $request ['nom'];
+   // $Etudiants->prenomEtudiant = $request ['prenom'];  
+   // $Etudiants->ageEtudiant= $request ['age'];  
+   // $Etudiants->sexeEtudiant = $request ['sexe'];  
+   // $Etudiants->save();
+    // ouvrir la page valider formulaire
+
+    
+    dd($request->all());
+    
 
      $test = $request->name;
 
 
  }
-
+ /**
+  * Ajouter un nouveau etudiant
+  */
 
     public function updateE (Request $request){
      
@@ -216,23 +233,69 @@ public function valider(Request $request){
            
 
     }
+/**
+ *Afficher la liste des etudiants
+ */
+  public function affichageE(Request $request){
 
-  public function affichageE(){
-     $Etudiants= Etudiant::get();
-    //dd($Etudiants);
-          if ($Etudiants!=null){
     
-              return view('etudiant',compact('Etudiants'));
+    if ($request->all() == null) {
+        $etuds= Etudiant::get();
+            //dd($Etudiants);
+          if ($etuds!=null){
+           
+              return view('etudiant',compact('etuds'));
 
-        }else{
-                 return  view('etudiant');
-                
+        }
+    } else {
+        $Etudiants= new  Etudiant();
+        $Etudiants->nomEtudiant = $request ['nomEtudiant'];
+        $Etudiants->prenomEtudiant = $request ['prenomEtudiant'];  
+        $Etudiants->ageEtudiant= $request ['ageEtudiant'];  
+        $Etudiants->sexeEtudiant = $request ['sexeEtudiant'];  
+        $Etudiants->save();
+        
+         $etuds= Etudiant::get();
+        //dd($Etudiants);
+              if ($etuds!=null){
+               
+                  return view('etudiant',compact('etuds'));
     
+            }
+    } 
+
+  
+    
+
 
 
 }
-} 
+ /**
+ *Validation de l ajout d un etudiant
+ */
 
+public function validerE(Request $request){
+
+    $Etudiants= new  Etudiant();
+    $Etudiants->nomEtudiant = $request ['nomEtudiant'];
+    $Etudiants->prenomEtudiant = $request ['prenomEtudiant'];  
+    $Etudiants->ageEtudiant= $request ['ageEtudiant'];  
+    $Etudiants->sexeEtudiant = $request ['sexeEtudiant'];  
+    $Etudiants->save();
+    
+    dd($request->all());
+    
+
+     $test = $request->name;
+}
+
+
+
+ 
+
+/**
+ * Permet à l admin d'ajouet des matieres 
+ */
    public function updateM (Request $request){
     
     $Matières= new Matières();
@@ -245,22 +308,61 @@ public function valider(Request $request){
        
 
 }
+ /**
+ * Permet d afficher la liste des matieres
+ */
+
+public function affichageM(Request $request){
+
+    if ($request->all() == null) {
+        $Mat= Matières::get();
+        if($Mat!=null){
+        
+            return view ('Matiere',compact('Mat'));
+            
+        }
+    } else {
+         $Matières= new Matières();
+         $Matières->nomMatière = $request ['nomMatière']; 
+         $Matières->save();
+        
+        
+         $Mat= Matières::get();
+         
+               
+            if($Mat!=null){
  
 
-public function affichageM(){
-      $Matières= Matières::get();
-    
-         if($Matières!=null){
-                return view ('Matiere',compact('Matières'));
-         }else{
-                return view('Matiere');
- }
+        return view ('Matiere',compact('Mat'));
+
 }
+
+}
+}
+
+
+/**
+ * Permet de valider l ajout des matieres
+ */
+ public function validerM(Request $request){
+    $Matières= new Matières();
+    $Matières->nomMatière = $request ['nomMatière']; 
+    $Matières->save();
+    
+    dd($request->all());
+    
+
+     $test = $request->name;
+}
+/**
+ * Permet à l admin d'ajouter des professeurs
+ */
 
 public function updateProf(Request $request){
   
     $Professeurs= new Professeurs();
     $Professeurs->nomProfesseurs = $request ['nom'];
+    $Professeurs->prenomProfesseurs =  $request ['prenom'];
     $Professeurs->save();
        return response()->json([
            'succes'=>true,
@@ -268,15 +370,48 @@ public function updateProf(Request $request){
        ],201);
 
 }
+/**
+ * Permet d afficher la liste des professeurs
+ */
 
-public function afficheP(){
-      $Professeurs= Professeurs::get();
-      if($Professeurs!=null){
-          return view ('Professeur',compact('Professeurs'));
-      }else{
-          return view ('Professeur');
-      }
+public function afficheP(Request $request){
+    if ($request->all() == null) {
+        $Profs= Professeurs::get();
+        if($Profs!=null){
+            return view ('Professeur',compact('Profs'));
+             }
+        } else {
+        $Professeurs= new Professeurs();
+        $Professeurs->nomProfesseurs = $request ['nomProfesseurs'];
+        $Professeurs->prenomProfesseurs =  $request ['prenomProfesseurs'];
+        $Professeurs->save();
+         
+            $Profs= Professeurs::get();
+               if($Professeurs!=null){
+          return view ('Professeur',compact('Profs'));
+     
+        
 }
+}
+}
+
+
+/**
+ * Permet de valider l ajout des professeurs
+ */
+public function validerP(Request $request){
+        $Professeurs= new Professeurs();
+        $Professeurs->nomProfesseurs = $request ['nomProfesseurs'];
+        $Professeurs->prenomProfesseurs =  $request ['prenomProfesseurs'];
+        $Professeurs->save();
+           dd($request->all());
+    
+
+     $test = $request->name;
+}
+/**
+ * Permet de recuperer les admins
+ */
 public function recupere(){
           $Administateurs= Administrateurs::get();
               if ($Administateurs!=null){
@@ -295,33 +430,46 @@ public function recupere(){
     
 }
 }
+
+/**
+ * Permet de valider les informations saisies
+ */
  
-public function Message (Request $request){
+public function validationAdmin (Request $request){
          //  dd($request->all());
-
+         //dd('youppi');
+         $Administateurs= new Administrateurs();
+         $Administateurs->email= $request ['email'];
+         $Administateurs->password= $request ['password'];
+          $Administateurs->save();
+         // dd($request->all());
+           //dd($request->all());
             $test = $request->name;
-     return view('Template');
+      return view('Template');
 
-
+     
  }
  
-public function updateA(Request $request){
+
+ 
+/**
+ * Permet d ajouter des admins
+ */
+ 
+public function ajoutA(Request $request){
     
             $Administateurs= new Administrateurs();
-            $Administateurs->email= $request ['Email'];
-            $Administateurs->password= $request ['Password'];
+            $Administateurs->email= $request ['email'];
+            $Administateurs->password= $request ['password'];
              $Administateurs->save();
-                   return response()->json([
+           
+                 return response()->json([
                      'succes'=>true,
                       'message'=>'insertion effectuer'
        ],201);
 
 }
-
-
 }
-
-
 
 
 

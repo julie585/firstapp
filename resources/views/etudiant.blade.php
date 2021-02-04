@@ -6,9 +6,9 @@
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href=" {{route('affichageE')}}">
+                  <a class="nav-link active" aria-current="page" href=" {{route('validerE')}}">
                     <span data-feather="home"></span>
-                    Etudiants
+            
                   </a>
                 </li>
            </div>
@@ -17,7 +17,7 @@
 </nav>
 @endsection
 @section('Information')
-<h2>Section title</h2>
+<h2>lISTE DES ETUDIANTS</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -30,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-                @foreach($Etudiants as $name)
+                @foreach($etuds as $name)
                 
                         <tr>
                                 <td>{{$name['id']}}</td>

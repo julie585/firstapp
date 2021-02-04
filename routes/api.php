@@ -30,15 +30,11 @@ Route::post('/suppetudiant','postscontroller@supp');
 Route::post('/information','informationController@inform');
 Route::post('/updateinformation','informationController@updateinform');
 Route::post('/supprimerinformation','informationController@supprimer');
-Route::post('/parking','classcontroller@ajout');
+//Route::post('/parking','classcontroller@ajout');
 Route::post('/updateEtudiant','postscontroller@updateE');
-Route::get('/afficheEtudiant','postscontroller@affichageE');
-Route::post('/updateMatiere','postscontroller@updateM');
-Route::get('/afficheMatiere','postscontroller@affichageM');
-Route::post('/updateProfesseur','postscontroller@updateProf');
-Route::get('/afficheProfesseur','postscontroller@afficheP');
-Route::get('/affiche','postscontroller@affichage');
-Route::get('/Récuperation','postscontroller@recupere');
-Route::post('/updateAdmin','postscontroller@updateA');
 
-    
+Route::post('/updateMatiere','postscontroller@updateM');
+
+Route::post('/updateProfesseur','postscontroller@updateProf');
+
+Route::get('/affiche','postscontroller@affichage');

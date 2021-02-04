@@ -16,6 +16,7 @@ class CreateProfesseursTable extends Migration
         Schema::create('professeurs', function (Blueprint $table) {
             $table->id();
             $table->string('nomProfesseurs',255);
+            $table->string('prenomProfesseurs',255);
             $table->timestamps();
         });
     }

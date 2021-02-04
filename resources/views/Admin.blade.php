@@ -38,14 +38,15 @@
   <body class="text-center">
     
 <main class="form-signin">
-    <form method="POST" action="{{route('Message')}}">
+  <form method="post" action="{{route('validationAdmin')}}">
     @csrf
+  
 
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus >
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+        <label for="inputEmail" class="visually-hidden">email</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="email" name="email" required autofocus >
+        <label for="inputPassword" class="visually-hidden">password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="password" name="password" required>
         <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
